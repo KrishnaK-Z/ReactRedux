@@ -207,6 +207,7 @@ header {
                             @include smooth-anim-2s;
                             // color: $actionButton;
                             &:hover {
+                                color: $deleteButton;
                                 transform: scale(1.2);
                             }
                         }
