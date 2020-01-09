@@ -1,0 +1,93 @@
+.list {
+    @include display-flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    width: 90%;
+    background-color: $bgColor;
+    border-radius: 6px;
+    list-style: none;
+    overflow: hidden;
+    .list-item {
+        margin: 0;
+        padding: 0;
+        position: relative;
+        &:last-child {
+            border: 0;
+        }
+    }
+}
+
+// hide the checkbox
+.hidden-box {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+    appearance: none;
+    opacity: 0;
+}
+
+.check--label {
+    @include display-flex;
+    font-size: 20px;
+    margin: 0;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.check--label-box {
+    @include display-flex;
+    align-self: center;
+    position: relative;
+    height: 20px;
+    width: 20px;
+    margin: 0 20px;
+    border: 2px solid $textColor;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.check--label-text {
+    @include display-flex;
+    align-self: center;
+    position: relative;
+    cursor: pointer;
+    padding: 20px;
+    &:after {
+        content: '';
+        display: block;
+        width: 0%;
+        height: 2px;
+        background-color: $textColor;
+        position: absolute;
+        top: 50%;
+        left: 7.5%;
+        transform: translateY(-50%);
+        transition: width 100ms ease-in-out;
+    }
+}
+
+// the magic
+.hidden-box:checked+.check--label {
+    .check--label-box {
+        &:after {
+            content: '';
+            display: block;
+            position: absolute;
+            top: -1px;
+            left: 4px;
+            width: 6px;
+            height: 12px;
+            border: solid $textColor;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+    }
+    .check--label-text {
+        &:after {
+            width: 85%;
+        }
+    }
+}

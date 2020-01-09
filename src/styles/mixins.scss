@@ -1,0 +1,38 @@
+@mixin relative-x-center {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+@mixin display-flex {
+    display: -webkit-box;
+    /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box;
+    /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox;
+    /* TWEENER - IE 10 */
+    display: -webkit-flex;
+    /* NEW - Chrome */
+    display: flex;
+    /* NEW, Spec - Opera 12.1, Firefox 20+ */
+}
+
+@mixin rm-bg-border {
+    background: transparent;
+    border: none;
+}
+
+@mixin smooth-anim-2s {
+    transition: all .2s ease-out, color .2s ease-out;
+}
+
+@mixin relative-centre {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@mixin border-rad-1em {
+    border-radius: 1em;
+}

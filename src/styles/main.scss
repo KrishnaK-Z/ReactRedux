@@ -1,0 +1,232 @@
+body {
+    background-color: $bgColor;
+}
+
+.App {
+    width: 100%;
+}
+
+// Header Styles
+header {
+    @include display-flex;
+    justify-content: center;
+    margin-top: 2em;
+    width: 100%;
+    background-color: $cardBgColor;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    padding: 1.2em 0em;
+    .header-container {
+        width: 70%;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-pack: space-between;
+        justify-content: space-between;
+        -ms-flex-align: center;
+        align-items: center;
+        .search-form {
+            width: 80%;
+            // max-width: 790px;
+            .inner-form {
+                width: 100%;
+                .input-field {
+                    width: 100%;
+                    position: relative;
+                    .btn-search {
+                        @include display-flex;
+                        width: 33px;
+                        -ms-flex-align: center;
+                        align-items: center;
+                        position: absolute;
+                        left: 0;
+                        height: 100%;
+                        background: transparent;
+                        border: 0;
+                        padding: 0;
+                        cursor: pointer;
+                        -ms-flex-pack: flex-start;
+                        justify-content: flex-start;
+                        svg {
+                            color: $textColor;
+                            width: 20px;
+                            height: 20px;
+                        }
+                    }
+                    input {
+                        height: 100%;
+                        width: 100%;
+                        background: transparent;
+                        border: 0;
+                        display: block;
+                        padding-left: 2em;
+                        font-size: 18px;
+                        color: $textColor;
+                        border-radius: 34px;
+                    }
+                }
+            }
+        }
+    }
+    .settings {
+        width: 20%;
+        ul {
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-pack: flex-end;
+            justify-content: flex-end;
+            -ms-flex-align: center;
+            align-items: center;
+            li {
+                margin: 0.5em;
+                svg {
+                    cursor: pointer;
+                    color: $textColor;
+                    @include smooth-anim-2s;
+                    &:hover {
+                        transform: scale(1.2);
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Main Section
+.main-section {
+    @include display-flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2em;
+    width: 100%;
+    color: $textColor;
+    .user-section {
+        @include display-flex;
+        width: 70%;
+        height: 100%;
+        .user-name {
+            width: 80%;
+            height: 100%;
+            line-height: 4em;
+            h1 {
+                font-size: 2em;
+            }
+        }
+        .user-settings {
+            width: 20%;
+            height: 100%;
+            line-height: 4em;
+            ul {
+                @include display-flex;
+                font-size: 1.5em;
+                justify-content: flex-start;
+                li {
+                    margin: auto 0.5em;
+                    svg {
+                        cursor: pointer;
+                        color: $textColor;
+                        @include smooth-anim-2s;
+                        &:hover {
+                            transform: scale(1.2);
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .add-todo {
+        @include display-flex;
+        width: 70%;
+        height: 4em;
+        margin-top: 1em;
+        @include border-rad-1em;
+        background-color: $thumbnail;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+        .new-todo {
+            width: 90%;
+            padding: 1em;
+            color: $textColor;
+            @include rm-bg-border;
+        }
+        .new-todo-btn {
+            width: 10%;
+            color: $textColor;
+            @include rm-bg-border;
+            @include smooth-anim-2s;
+            &:hover {
+                transform: scale(1.2);
+            }
+        }
+    }
+    .todo-lists {
+        @include display-flex;
+        flex-direction: column;
+        width: 70%;
+        margin-top: 2em;
+        .todo {
+            @include display-flex;
+            width: 100%;
+            height: 20em;
+            background-color: $cardBgColor;
+            margin: 1em auto;
+            @include border-rad-1em;
+            @include smooth-anim-2s;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+            &:hover {
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+            }
+            .left-side {
+                width: 20%;
+                height: 100%;
+                .icon-container {
+                    @include relative-centre;
+                    @include border-rad-1em;
+                    top: 30%;
+                    width: 6em;
+                    height: 6em;
+                    background: $thumbnail;
+                    svg {
+                        font-size: 3em;
+                        color: $textColor;
+                        @include relative-centre;
+                    }
+                }
+            }
+            .right-side {
+                width: 85%;
+                height: 100%;
+                padding: 1.6em;
+                .todo-header {
+                    @include display-flex;
+                    width: 100%;
+                    .todo-title {
+                        width: 80%;
+                    }
+                    .todo-action {
+                        width: 20%;
+                        svg {
+                            cursor: pointer;
+                            @include smooth-anim-2s;
+                            // color: $actionButton;
+                            &:hover {
+                                transform: scale(1.2);
+                            }
+                        }
+                    }
+                }
+                h1 {
+                    font-size: 1.5em;
+                }
+                .list-slides-container {
+                    margin-top: 1em;
+                }
+                .slick-arrow {
+                    display: none !important;
+                }
+                .slick-dots li button:before {
+                    color: $textColor;
+                    font-size: 0.7rem;
+                }
+                @import "list-style.scss";
+            }
+        }
+    }
+}
