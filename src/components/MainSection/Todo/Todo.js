@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faListUl, faTrashAlt } from '@fortawesome/fontawesome-free-solid';
+import { faListUl, faTrashAlt,faAngleDown } from '@fortawesome/fontawesome-free-solid';
 import ListsSlide from './ListsSlide';
 import Slider from "react-slick";
+import PropTypes from 'prop-types';
 
 export default class Todo extends Component {
 
@@ -17,7 +18,15 @@ export default class Todo extends Component {
     };
   }
 
+  static propTypes = {
+    todo: PropTypes.object.isRequired,
+    deleteTodo: PropTypes.func.isRequired,
+    changeStatusTodo: PropTypes.func.isRequired,
+    editTodo: PropTypes.func.isRequired
+  }
+
   render() {
+    const { todo, changeStatusTodo, deleteTodo, editTodo } = this.props
 
     return (
       <div className="todo">
@@ -28,10 +37,16 @@ export default class Todo extends Component {
           </div>
           <div className="right-side">
               <div className="todo-header">
-                <h1 className="todo-title">Todo Title</h1>
+                <h1 className="todo-title">{todo.title}</h1>
                 <div className="todo-action">
                     <div className="status-selector">
-    
+                      <select className="select__input select-status" name="selectStatus" id="selectStatus">
+                        <option value="0">Select option</option>
+                        <option value="1">Option 1</option>
+                        <option value="2">Option 2</option>
+                      </select>
+
+                      {/* <FontAwesomeIcon icon={faAngleDown} /> */}
                     </div>
                     <FontAwesomeIcon icon={faTrashAlt} />
                 </div>

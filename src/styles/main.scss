@@ -198,11 +198,35 @@ header {
                     @include display-flex;
                     width: 100%;
                     .todo-title {
-                        width: 80%;
+                        width: 70%;
                     }
                     .todo-action {
-                        width: 20%;
-                        svg {
+                        @include display-flex;
+                        justify-content: space-evenly;
+                        width: 30%;
+                        align-items: center;
+                        .select__input {
+                            /* for Firefox */
+                            -moz-appearance: none;
+                            /* for Chrome */
+                            -webkit-appearance: none;
+                            background-color: transparent;
+                            border: none;
+                            padding: 0.5em 1em;
+                            color: $textColor;
+                            cursor: pointer;
+                            option {
+                                color: $bgColor;
+                            }
+                        }
+                        /* For IE10 */
+                        .select__input::-ms-expand {
+                            display: none;
+                        }
+                        .status-selector {
+                            background-color: $bgColor;
+                        }
+                        >svg {
                             cursor: pointer;
                             @include smooth-anim-2s;
                             // color: $actionButton;

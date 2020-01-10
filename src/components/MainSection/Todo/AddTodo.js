@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import TodoInput from './TodoInput';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus } from '@fortawesome/fontawesome-free-solid';
+import { faExpand } from '@fortawesome/fontawesome-free-solid';
 
 // May need to be changed
 export default class AddTodo extends Component {
@@ -24,7 +24,7 @@ export default class AddTodo extends Component {
           }}
           />
           <button className="new-todo-btn">
-            <FontAwesomeIcon icon={faPlus}/>
+            <FontAwesomeIcon icon={faExpand}/>
           </button>
       </div>
     );

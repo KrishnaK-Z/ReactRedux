@@ -13,7 +13,7 @@ export default class TodoLists extends Component {
     return (
       <div className="todo-lists">
         {this.props.filteredTodos.map(todo => 
-        <Todo/>  
+        <Todo key={todo.id} todo={todo} {...this.props.actions}/>
         )}
           
       </div>
