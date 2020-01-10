@@ -1,6 +1,6 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faToggleOn, faLanguage, faShareAlt, faTrashAlt } from '@fortawesome/fontawesome-free-solid';
+import { faLanguage, faShareAlt, faTrashAlt } from '@fortawesome/fontawesome-free-solid';
 import Theme from '../Header/Theme';
 
 const UserSection = () => (
@@ -10,7 +10,9 @@ const UserSection = () => (
       </div>
       <div className="user-settings">
           <ul>
-              <li><FontAwesomeIcon icon={faToggleOn} /></li>
+              <li>
+                <Theme/>
+              </li>
               <li><FontAwesomeIcon icon={faLanguage} /></li>
               <li><FontAwesomeIcon icon={faShareAlt} /></li>
           </ul>

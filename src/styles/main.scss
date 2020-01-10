@@ -156,6 +156,17 @@ header {
             }
         }
     }
+    .select-filter {
+        width: 70%;
+        align-items: center;
+        margin-top: 2em;
+        h2 {
+            margin-bottom: 0.5em;
+        }
+        >div {
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+        }
+    }
     .todo-lists {
         @include display-flex;
         flex-direction: column;
@@ -196,6 +207,7 @@ header {
                 padding: 1.6em;
                 .todo-header {
                     @include display-flex;
+                    align-items: center;
                     width: 100%;
                     .todo-title {
                         width: 70%;
@@ -205,26 +217,8 @@ header {
                         justify-content: space-evenly;
                         width: 30%;
                         align-items: center;
-                        .select__input {
-                            /* for Firefox */
-                            -moz-appearance: none;
-                            /* for Chrome */
-                            -webkit-appearance: none;
-                            background-color: transparent;
-                            border: none;
-                            padding: 0.5em 1em;
-                            color: $textColor;
-                            cursor: pointer;
-                            option {
-                                color: $bgColor;
-                            }
-                        }
-                        /* For IE10 */
-                        .select__input::-ms-expand {
-                            display: none;
-                        }
                         .status-selector {
-                            background-color: $bgColor;
+                            width: 75%;
                         }
                         >svg {
                             cursor: pointer;
