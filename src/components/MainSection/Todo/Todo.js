@@ -73,7 +73,7 @@ export default class Todo extends Component {
     chunk = 3;
     
     return (
-      <div className="todo">
+      <div className="todo" id={todo.id}>
           <div className="left-side">
               <div className="icon-container">
                   <FontAwesomeIcon icon={faListUl}/>

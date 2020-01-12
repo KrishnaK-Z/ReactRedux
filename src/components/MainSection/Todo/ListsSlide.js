@@ -11,11 +11,12 @@ export default class ListSlides extends Component {
 
   render() {
     const {lists, todoId} = this.props;
+    
     return (
       <div className="list-slide">
         {
           lists.map((list, index, lists) => (
-            <List key={list.id} list={list} todoId/>
+            <List key={list.id} list={list} todoId={todoId}/>
           ))
         }
       </div>
