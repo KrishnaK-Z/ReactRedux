@@ -10,17 +10,18 @@ export default class ListSlides extends Component {
     todoId: PropTypes.number.isRequired,
     deleteList: PropTypes.func,
     editList: PropTypes.func,
+    changeListStatus: PropTypes.func,
   }
 
   render() {
-    const {lists, todoId, deleteList, editList} = this.props;
+    const {lists, todoId, deleteList, editList, changeListStatus} = this.props;
     
     return (
       <div className="list-slide">
         <ul className="list">
         {
           lists.map((list, index, lists) => (
-            <List key={list.id} list={list} todoId={todoId} deleteList={deleteList} editList={editList} />
+            <List key={list.id} list={list} todoId={todoId} deleteList={deleteList} editList={editList} changeListStatus={changeListStatus} />
           ))
         }
         </ul>

@@ -11,14 +11,21 @@ export default class List extends Component {
         todoId: PropTypes.number.isRequired,
         deleteList: PropTypes.func,
         editList: PropTypes.func,
+        changeListStatus: PropTypes.func
     }
 
-    state = {
-        editing: false
-    };
+    
 
-    editListStatus = () => {
-        this.setState({ editing: true });
+    constructor (props) {
+        super(props);
+        this.state = {
+            editing: false,
+            checked: false
+        };
+    }
+
+    listEditting = () => {
+        this.setState({ ...this.state, editing: true });
     };
 
     handleSave = (todoId, listId, title) => {
@@ -27,15 +34,20 @@ export default class List extends Component {
         } else {
             this.props.editList(todoId, listId, title);
         }
-        this.setState({ editing: false });
+        this.setState({ ...this.state, editing: false });
     }
 
     closeEditing = () => {
-        this.setState({ editing: false });
+        this.setState({ ...this.state, editing: false });
+    }
+
+    changeListStatus = (event) => {
+        this.props.changeListStatus(this.props.todoId, this.props.list.id, !event.target.checked);
+        this.setState({ ...this.state, checked: !event.target.checked });
     }
 
     render() {
-        const { list, todoId, deleteList } = this.props;
+        const { list, todoId, deleteList, changeListStatus } = this.props;
         let element;
         
         if (this.state.editing) {
@@ -49,7 +61,7 @@ export default class List extends Component {
             element = (
                 <li className="list-item">
                     <div className="list-title">
-                        <input type="checkbox" id={todoId + "-list-" + list.id} className="hidden-box" defaultChecked/>
+                        <input type="checkbox" id={todoId + "-list-" + list.id} className="hidden-box" onChange={this.changeListStatus} defaultChecked={list.status}/>
                         <label htmlFor={todoId + "-list-" + list.id} className="check--label">
                             <span className="check--label-box"></span>
                             <span className="check--label-text">{list.title}</span>
@@ -57,7 +69,7 @@ export default class List extends Component {
                     </div>
                     <div className="list-actions">
                     <FontAwesomeIcon icon={faEdit} 
-                                        onClick={this.editListStatus} />
+                                        onClick={this.listEditting} />
                     <FontAwesomeIcon icon={faTrashAlt} 
                                     onClick={() => deleteList(todoId, list.id)}/>
                     </div>

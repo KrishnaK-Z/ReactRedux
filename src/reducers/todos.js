@@ -5,9 +5,7 @@ import {
     ADD_LIST,
     DELETE_LIST,
     EDIT_LIST,
-    COMPLETE_LIST,
-    COMPLETE_ALL_TODOS,
-    CLEAR_COMPLETED,
+    CHANGE_LIST_STATUS,
     CHANGE_TODO_STATUS
 } from '../constants/todo';
 
@@ -24,7 +22,7 @@ const initialState = [{
     lists: [{
         id: 0,
         title: 'First Things First!!!',
-        status: STATUS_OPEN
+        status: false
     }]
 }];
 
@@ -88,7 +86,7 @@ export default function Todos(state = initialState, action) {
                                     return Math.max(list.id, maxId)
                                 }, -1) + 1,
                                 title: action.title,
-                                status: STATUS_OPEN
+                                status: false
                             }
                         ];
                     })()
@@ -103,6 +101,20 @@ export default function Todos(state = initialState, action) {
                         var lists = todo.lists;
                         return lists.map(list =>
                             list.id === action.listId ? {...list, title: action.title } :
+                            list
+                        );
+                    })()
+                } :
+                todo
+            );
+
+        case CHANGE_LIST_STATUS:
+            return state.map(todo =>
+                todo.id === action.todoId ? {...todo,
+                    lists: (function() {
+                        var lists = todo.lists;
+                        return lists.map(list =>
+                            list.id === action.listId ? {...list, status: action.status } :
                             list
                         );
                     })()

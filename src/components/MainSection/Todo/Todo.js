@@ -51,6 +51,7 @@ export default class Todo extends Component {
     deleteList: PropTypes.func.isRequired,
     editList: PropTypes.func.isRequired,
     changeTodoStatus: PropTypes.func.isRequired,
+    changeListStatus: PropTypes.func.isRequired,
   }
 
   state = {
@@ -75,7 +76,7 @@ export default class Todo extends Component {
 
   render() {
     const { selectedOption, editing } = this.state;
-    const { todo, changeStatusTodo, deleteTodo, editTodo, addList, deleteList, editList } = this.props;
+    const { todo, changeStatusTodo, deleteTodo, editTodo, addList, deleteList, editList, changeListStatus } = this.props;
     const settings = {
       dots: true,
       infinite: false,
@@ -116,7 +117,7 @@ export default class Todo extends Component {
                 <Slider {...settings}>
                   {
                     this.createChunkLists(todo.lists, chunk).map((list, index, lists) => (
-                      <ListsSlide key={todo.id + "slide" + index} lists={list} todoId={todo.id} deleteList={deleteList} editList={editList} />
+                      <ListsSlide key={todo.id + "slide" + index} lists={list} todoId={todo.id} deleteList={deleteList} editList={editList} changeListStatus={changeListStatus} />
                     ))
                   }
                 </Slider>
