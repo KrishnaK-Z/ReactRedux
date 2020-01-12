@@ -6,19 +6,24 @@ import PropTypes from 'prop-types';
 export default class ListSlides extends Component {
 
   static propTypes = {
-    lists: PropTypes.array.isRequired
+    lists: PropTypes.array.isRequired,
+    todoId: PropTypes.number.isRequired,
+    deleteList: PropTypes.func,
+    editList: PropTypes.func,
   }
 
   render() {
-    const {lists, todoId} = this.props;
+    const {lists, todoId, deleteList, editList} = this.props;
     
     return (
       <div className="list-slide">
+        <ul className="list">
         {
           lists.map((list, index, lists) => (
-            <List key={list.id} list={list} todoId={todoId}/>
+            <List key={list.id} list={list} todoId={todoId} deleteList={deleteList} editList={editList} />
           ))
         }
+        </ul>
       </div>
     );
     

@@ -56,6 +56,19 @@ export default function Todos(state = initialState, action) {
                 todo
             );
 
+        case DELETE_LIST:
+            return state.map(todo =>
+                todo.id === action.todoId ? {...todo,
+                    lists: (function() {
+                        var lists = todo.lists;
+                        return lists.filter(list =>
+                            list.id !== action.listId
+                        );
+                    })()
+                } :
+                todo
+            );
+
         case ADD_LIST:
             return state.map(todo =>
                 todo.id === action.todoId ? {...todo,
@@ -71,6 +84,20 @@ export default function Todos(state = initialState, action) {
                                 status: STATUS_OPEN
                             }
                         ];
+                    })()
+                } :
+                todo
+            );
+
+        case EDIT_LIST:
+            return state.map(todo =>
+                todo.id === action.todoId ? {...todo,
+                    lists: (function() {
+                        var lists = todo.lists;
+                        return lists.map(list =>
+                            list.id === action.listId ? {...list, title: action.title } :
+                            list
+                        );
                     })()
                 } :
                 todo

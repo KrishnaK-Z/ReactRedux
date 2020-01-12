@@ -11,6 +11,7 @@ export default class TodoInput extends Component {
         onSave: PropTypes.func.isRequired,
         text: PropTypes.string,
         placeholder: PropTypes.string,
+        onEsec: PropTypes.func,
     }
 
     state = {
@@ -25,6 +26,8 @@ export default class TodoInput extends Component {
                 this.setState({ text: value });
                 event.target.value = "";
             }
+        } else if (event.which === 27) {
+            this.props.onEsec();
         }
     }
 
@@ -39,7 +42,7 @@ export default class TodoInput extends Component {
     }
 
     render() {
-        return ( 
+        return (
             <input className = {
                 classnames({
                     edit: this.props.editing,

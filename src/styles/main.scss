@@ -247,6 +247,42 @@ header {
                 }
                 .list-slides-container {
                     margin-top: 1em;
+                    .list {
+                        @include smooth-anim-2s;
+                        .edit {
+                            background: transparent;
+                            border: 1px solid blue;
+                            border-radius: 6px;
+                            color: $textColor;
+                            padding: 20px;
+                        }
+                        .list-item {
+                            @include display-flex;
+                            align-items: center;
+                            .list-title {
+                                width: 90%;
+                            }
+                            .list-actions {
+                                @include display-flex;
+                                width: 10%;
+                                justify-content: space-evenly;
+                                >svg {
+                                    cursor: pointer;
+                                    @include smooth-anim-2s;
+                                    &:hover {
+                                        transform: scale(1.2);
+                                    }
+                                    &.fa-trash-alt:hover {
+                                        color: $deleteButton;
+                                    }
+                                    &.fa-edit:hover {
+                                        transform: scale(1.2);
+                                        color: #4D18FF;
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
                 .slick-arrow {
                     display: none !important;
