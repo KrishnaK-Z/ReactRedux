@@ -7,7 +7,8 @@ import {
     EDIT_LIST,
     COMPLETE_LIST,
     COMPLETE_ALL_TODOS,
-    CLEAR_COMPLETED
+    CLEAR_COMPLETED,
+    CHANGE_TODO_STATUS
 } from '../constants/todo';
 
 import {
@@ -53,6 +54,12 @@ export default function Todos(state = initialState, action) {
         case EDIT_TODO:
             return state.map(todo =>
                 todo.id === action.todoId ? {...todo, title: action.title } :
+                todo
+            );
+
+        case CHANGE_TODO_STATUS:
+            return state.map(todo =>
+                todo.id === action.todoId ? {...todo, status: action.status } :
                 todo
             );
 

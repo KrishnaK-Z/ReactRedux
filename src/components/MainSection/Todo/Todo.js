@@ -8,12 +8,12 @@ import Select from 'react-select';
 import chunk from 'lodash.chunk';
  
 const options = [
-  { value: 'open', label: 'Open' },
-  { value: 'completed', label: 'Completed' },
-  { value: 'under review', label: 'Review' },
+  { value: 'STATUS_OPEN', label: 'Open' },
+  { value: 'STATUS_COMPLETED', label: 'Completed' },
+  { value: 'STATUS_ONREVIEW', label: 'Review' },
 ];
 
-const colourStyles = {
+const statusSelectStyles = {
   control: styles => (
       { 
           ...styles, 
@@ -31,6 +31,10 @@ const colourStyles = {
           color: '#282828'
       };
       },
+  singleValue: (styles, { data }) => ({
+    ...styles,
+        color: '#F1F1F1'
+    }),
   };
 
 export default class Todo extends Component {
@@ -46,6 +50,7 @@ export default class Todo extends Component {
     editTodo: PropTypes.func.isRequired,
     deleteList: PropTypes.func.isRequired,
     editList: PropTypes.func.isRequired,
+    changeTodoStatus: PropTypes.func.isRequired,
   }
 
   state = {
@@ -55,12 +60,18 @@ export default class Todo extends Component {
 
   handleChange = selectedOption => {
     this.setState({ selectedOption });
-    console.log(`Option selected:`, selectedOption);
+    this.props.changeTodoStatus(this.props.todo.id, selectedOption.value);
   };
 
   createChunkLists = (lists, size = 3) => {
     return chunk(lists, size);
   };
+
+  selectedStatus = () => {
+    options.filter(option => (
+      option.value == this.props.todo.status
+    ));
+  }
 
   render() {
     const { selectedOption, editing } = this.state;
@@ -92,7 +103,8 @@ export default class Todo extends Component {
                             value={selectedOption}
                             onChange={this.handleChange}
                             options={options}
-                            styles={colourStyles}
+                            defaultValue={this.selectedStatus}
+                            styles={statusSelectStyles}
                           />
                   </div>
                   <FontAwesomeIcon icon={faPlus} onClick={() => addList(todo.id, "New List")}/>
