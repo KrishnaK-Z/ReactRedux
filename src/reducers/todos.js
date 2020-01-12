@@ -67,7 +67,7 @@ export default function Todos(state = initialState, action) {
                                 id: lists.reduce((maxId, list) => {
                                     return Math.max(list.id, maxId)
                                 }, -1) + 1,
-                                title: action.listTitle,
+                                title: action.title,
                                 status: STATUS_OPEN
                             }
                         ];

@@ -209,24 +209,35 @@ header {
                     @include display-flex;
                     align-items: center;
                     width: 100%;
-                    .todo-title {
-                        width: 70%;
+                    .todo-title-header {
+                        @include display-flex;
+                        align-items: center;
+                        width: 50%;
+                        .todo-title {
+                            margin-right: 1em;
+                        }
                     }
                     .todo-action {
                         @include display-flex;
                         justify-content: space-evenly;
-                        width: 30%;
+                        width: 50%;
                         align-items: center;
                         .status-selector {
-                            width: 75%;
+                            width: 60%;
                         }
                         >svg {
                             cursor: pointer;
                             @include smooth-anim-2s;
                             // color: $actionButton;
                             &:hover {
-                                color: $deleteButton;
                                 transform: scale(1.2);
+                            }
+                            &.fa-trash-alt:hover {
+                                color: $deleteButton;
+                            }
+                            &.fa-plus:hover {
+                                transform: scale(1.2);
+                                color: #4D18FF;
                             }
                         }
                     }

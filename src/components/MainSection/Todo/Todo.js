@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faListUl, faTrashAlt,faAngleDown } from '@fortawesome/fontawesome-free-solid';
+import { faListUl, faTrashAlt, faPlus, faUndoAlt } from '@fortawesome/fontawesome-free-solid';
 import ListsSlide from './ListsSlide';
 import Slider from "react-slick";
 import PropTypes from 'prop-types';
 import Select from 'react-select';
+import chunk from 'lodash.chunk';
  
 const options = [
   { value: 'open', label: 'Open' },
@@ -36,13 +37,6 @@ export default class Todo extends Component {
 
   constructor() {
     super();
-    const settings = {
-      dots: true,
-      infinite: false,
-      speed: 500,
-      slidesToShow: 1,
-      slidesToScroll: 1
-    };
   }
 
   static propTypes = {
@@ -54,6 +48,7 @@ export default class Todo extends Component {
 
   state = {
     selectedOption: null,
+    editing: false
   };
 
   handleChange = selectedOption => {
@@ -61,11 +56,22 @@ export default class Todo extends Component {
     console.log(`Option selected:`, selectedOption);
   };
 
+  createChunkLists = (lists, size = 3) => {
+    return chunk(lists, size);
+  };
+
   render() {
-    const { selectedOption } = this.state;
-
-    const { todo, changeStatusTodo, deleteTodo, editTodo } = this.props
-
+    const { selectedOption, editing } = this.state;
+    const { todo, changeStatusTodo, deleteTodo, editTodo, addList } = this.props;
+    const settings = {
+      dots: true,
+      infinite: false,
+      speed: 500,
+      slidesToShow: 1,
+      slidesToScroll: 1
+    }, 
+    chunk = 3;
+    
     return (
       <div className="todo">
           <div className="left-side">
@@ -75,23 +81,30 @@ export default class Todo extends Component {
           </div>
           <div className="right-side">
               <div className="todo-header">
-                <h1 className="todo-title">{todo.title}</h1>
+                <div className="todo-title-header">
+                  <h1 className="todo-title">{todo.title}</h1>
+                </div>
                 <div className="todo-action">
-                    <div className="status-selector">
-                      <Select
-                              value={selectedOption}
-                              onChange={this.handleChange}
-                              options={options}
-                              styles={colourStyles}
-                            />
-                    </div>
-                    <FontAwesomeIcon icon={faTrashAlt} onClick={() => deleteTodo(todo.id)}/>
+                  <div className="status-selector">
+                    <Select
+                            value={selectedOption}
+                            onChange={this.handleChange}
+                            options={options}
+                            styles={colourStyles}
+                          />
+                  </div>
+                  <FontAwesomeIcon icon={faPlus} onClick={() => addList(todo.id, "New List")}/>
+                  <FontAwesomeIcon icon={faUndoAlt} />
+                  <FontAwesomeIcon icon={faTrashAlt} onClick={() => deleteTodo(todo.id)}/>
                 </div>
               </div>
               <div className="list-slides-container">
-                <Slider {...this.settings}>
-                  {/* for each */}
-                    <ListsSlide/>
+                <Slider {...settings}>
+                  {
+                    this.createChunkLists(todo.lists, chunk).map((list, index, lists) => (
+                      <ListsSlide key={todo.id + "slide" + index} lists={list} todoId={todo.id}/>
+                    ))
+                  }
                 </Slider>
               </div>
           </div>
