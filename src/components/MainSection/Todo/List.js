@@ -58,8 +58,8 @@ export default class List extends Component {
                     <div className="list-actions">
                     <FontAwesomeIcon icon={faEdit} 
                                         onClick={this.editListStatus} />
-                        <FontAwesomeIcon icon={faTrashAlt} 
-                                        onClick={() => deleteList(todoId, list.id)}/>
+                    <FontAwesomeIcon icon={faTrashAlt} 
+                                    onClick={() => deleteList(todoId, list.id)}/>
                     </div>
                 </li>
             );
