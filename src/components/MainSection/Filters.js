@@ -11,12 +11,12 @@ const colourStyles = {
 control: styles => (
     { 
         ...styles, 
-        backgroundColor: '#282828', 
+        backgroundColor: (document.documentElement.getAttribute('data-theme') === 'light') ? '#FFFFFF' : '#282828',
         color: '#F1F1F1',
-        borderColor: '#282828',
+        borderColor: (document.documentElement.getAttribute('data-theme') === 'light') ? '' : '#282828',
         padding: '0.3em 0em',
         ':hover': {
-            borderColor: '#282828'
+            borderColor: (document.documentElement.getAttribute('data-theme') === 'light') ? "" : '#282828'
         }
     }),
 option: (styles, { data, isDisabled, isFocused, isSelected }) => {
