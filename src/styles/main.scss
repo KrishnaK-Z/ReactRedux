@@ -235,8 +235,10 @@ header {
                             &.fa-trash-alt:hover {
                                 color: $deleteButton;
                             }
+                            &.fa-undo-alt:hover {
+                                color: $actionButtonHover;
+                            }
                             &.fa-plus:hover {
-                                transform: scale(1.2);
                                 color: #4D18FF;
                             }
                         }

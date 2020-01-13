@@ -1,0 +1,66 @@
+html.theme-transition,
+html.theme-transition *,
+html.theme-transition *:before,
+html.theme-transition *:after {
+    transition: all 750ms !important;
+    transition-delay: 0 !important;
+}
+
+html[data-theme="light"] {
+    body {
+        background-color: $lightBgColor;
+    }
+    header {
+        background-color: $lightHeaderBgColor;
+    }
+    .main-section {
+        color: $lightTextColor;
+        .user-settings {
+            ul {
+                li {
+                    svg {
+                        color: $lightIconColor;
+                    }
+                }
+            }
+        }
+        .add-todo {
+            background-color: $lightBgColor;
+        }
+        .todo-lists {
+            .todo {
+                background-color: $lightBgColor;
+                .left-side {
+                    .icon-container {
+                        background-color: $lightThumbnailBg;
+                        svg {
+                            color: $lightIconColor;
+                        }
+                    }
+                }
+                .right-side {
+                    .list {
+                        background-color: $lightThumbnailBg;
+                    }
+                    .check--label-box {
+                        border: 2px solid $lightListStrike;
+                    }
+                    .check--label-text {
+                        &:after {
+                            background-color: $lightListStrike;
+                        }
+                    }
+                    .hidden-box:checked+.check--label {
+                        .check--label-box {
+                            &:after {
+                                border: solid $lightListStrike;
+                                border-width: 0 2px 2px 0;
+                                transform: rotate(45deg);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
