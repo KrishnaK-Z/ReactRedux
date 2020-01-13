@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch, faBell, faCog, faPlusSquare } from '@fortawesome/fontawesome-free-solid';
+import { faSearch, faBell, faPlusSquare } from '@fortawesome/fontawesome-free-solid';
+import Settings from './Settings';
 
 export default class Header extends Component {
     render() {
@@ -23,7 +24,9 @@ export default class Header extends Component {
                       <ul>
                           <li><FontAwesomeIcon icon={faPlusSquare} /></li>
                           <li><FontAwesomeIcon icon={faBell} /></li>
-                          <li><FontAwesomeIcon icon={faCog} /></li>
+                          <li>
+                              <Settings/>
+                          </li>
                       </ul>
                   </div>
               </div>
