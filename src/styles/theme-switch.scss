@@ -42,7 +42,7 @@
 }
 
 input:checked+.slider {
-    background-color: $actionButtonHover;
+    background-color: $lightHeaderBgColor;
 }
 
 input:checked+.slider:before {

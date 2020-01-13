@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faListUl, faTrashAlt, faPlus, faUndoAlt } from '@fortawesome/fontawesome-free-solid';
-import ListsSlide from './ListsSlide';
+import ListsSlide from './List/ListsSlide';
 import Slider from "react-slick";
 import PropTypes from 'prop-types';
 import Select from 'react-select';

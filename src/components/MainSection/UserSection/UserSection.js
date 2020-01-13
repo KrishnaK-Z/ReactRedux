@@ -1,7 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLanguage, faShareAlt, faTrashAlt } from '@fortawesome/fontawesome-free-solid';
-import Theme from '../Header/Theme';
+import Theme from './Theme';
 
 const UserSection = () => (
   <div className="user-section">

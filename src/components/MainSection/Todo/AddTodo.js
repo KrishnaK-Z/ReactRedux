@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import TodoInput from './TodoInput';
+import TodoInput from '../Components/TodoInput';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faExpand } from '@fortawesome/fontawesome-free-solid';

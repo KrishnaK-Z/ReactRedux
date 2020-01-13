@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashAlt, faEdit } from '@fortawesome/fontawesome-free-solid';
-import TodoInput from './TodoInput';
+import TodoInput from '../../Components/TodoInput';
 
 export default class List extends Component {
 
