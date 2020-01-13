@@ -68,14 +68,15 @@ header {
     }
     .settings {
         width: 20%;
-        ul {
+        position: relative;
+        >ul {
             display: -ms-flexbox;
             display: flex;
             -ms-flex-pack: flex-end;
             justify-content: flex-end;
             -ms-flex-align: center;
             align-items: center;
-            li {
+            >li {
                 margin: 0.5em;
                 svg {
                     cursor: pointer;
@@ -84,6 +85,38 @@ header {
                     &:hover {
                         transform: scale(1.2);
                     }
+                }
+            }
+        }
+        .setting-container {
+            .setting-menu {
+                position: absolute;
+                top: 100%;
+                border: 1px solid $bgColor;
+                border-radius: 4px;
+                padding: 0;
+                margin: 2px 0 0 0;
+                box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.1);
+                background-color: $cardBgColor;
+                list-style-type: none;
+                color: $textColor;
+                display: none;
+                // @include smooth-anim-2s;
+                >li {
+                    padding: 10px 20px;
+                    cursor: pointer;
+                    white-space: nowrap;
+                    &:hover {
+                        background-color: $thumbnail;
+                    }
+                    svg {
+                        margin-right: 0.5em;
+                    }
+                }
+            }
+            &:hover {
+                .setting-menu {
+                    display: block;
                 }
             }
         }
